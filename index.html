@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="logo.png">
+<title>평촌아이티 홍길동</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap">
+<style>
+  /* Layout: one 90x50mm card, drawn to scale, type sized from the card's own width; actions sit below it. */
+  :root {
+    --ground: #efe9ea;
+    --card: #ffffff;
+    --ink: #1f1a1b;
+    --muted: #6d6265;
+    --line: #d9cfd1;
+    --brand: #e00024;
+    --brand-text: #c4001f;
+    --on-brand: #ffffff;
+    --shadow: 0 1px 2px rgb(60 20 28 / .10), 0 18px 40px -18px rgb(60 20 28 / .28);
+    --sans: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #151112;
+      --card: #231d1f;
+      --ink: #f6f0f1;
+      --muted: #b3a7aa;
+      --line: #463a3d;
+      --brand-text: #ff7186;
+      --shadow: 0 18px 40px -18px rgb(0 0 0 / .7);
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #151112;
+    --card: #231d1f;
+    --ink: #f6f0f1;
+    --muted: #b3a7aa;
+    --line: #463a3d;
+    --brand-text: #ff7186;
+    --shadow: 0 18px 40px -18px rgb(0 0 0 / .7);
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body { margin: 0; }
+  html, body { height: 100%; }
+  body {
+    display: grid;
+    place-items: center;
+    padding-block: 24px;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--sans);
+  }
+
+  .stack {
+    display: grid;
+    gap: 20px;
+    width: 100%;
+    max-width: 540px;
+    min-width: 0;
+  }
+
+  .sizer { container-type: inline-size; }
+
+  /* Korean standard card size: 90 x 50 mm */
+  .card {
+    aspect-ratio: 90 / 50;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 6.5cqw 7cqw;
+    background: var(--card);
+    border-radius: 1.2cqw;
+    box-shadow: var(--shadow);
+  }
+
+  .company {
+    display: flex;
+    align-items: center;
+    gap: 2.6cqw;
+    margin: 0;
+    font-size: max(15px, 4.4cqw);
+    font-weight: 700;
+    letter-spacing: -.01em;
+  }
+  .company img {
+    display: block;
+    width: 9.6cqw;
+    height: 9.6cqw;
+    flex: none;
+  }
+
+  .details {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 2cqw 4cqw;
+  }
+
+  .person {
+    display: flex;
+    align-items: baseline;
+    gap: 2.2cqw;
+    margin: 0;
+    min-width: 0;
+  }
+  .name {
+    font-size: max(28px, 9.4cqw);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: .06em;
+  }
+  .role {
+    color: var(--muted);
+    font-size: max(13px, 3.5cqw);
+    font-weight: 500;
+  }
+
+  .phone {
+    display: flex;
+    align-items: baseline;
+    gap: 1.6cqw;
+    margin: 0;
+    font-family: var(--mono);
+    font-size: max(13px, 3.5cqw);
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+  }
+  .phone abbr {
+    color: var(--brand-text);
+    text-decoration: none;
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding-inline: 18px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: transparent;
+    color: var(--ink);
+    font: 500 15px/1 var(--sans);
+    text-decoration: none;
+    cursor: pointer;
+    transition: border-color .15s, background-color .15s;
+  }
+  .btn:hover { border-color: var(--muted); }
+  .btn.primary {
+    border-color: var(--brand);
+    background: var(--brand);
+    color: var(--on-brand);
+  }
+  .btn.primary:hover { border-color: var(--brand-text); }
+  .btn:focus-visible {
+    outline: 2px solid var(--brand-text);
+    outline-offset: 2px;
+  }
+  .status {
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .btn { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<main class="stack">
+  <div class="sizer">
+    <article class="card" aria-label="평촌아이티 홍길동 사원 명함">
+      <p class="company">
+        <img src="logo.png" alt="평촌아이티 로고" width="489" height="489">
+        <span>평촌아이티</span>
+      </p>
+      <div class="details">
+        <h1 class="person">
+          <span class="name">홍길동</span>
+          <span class="role">사원</span>
+        </h1>
+        <p class="phone">
+          <abbr title="휴대전화">M</abbr>
+          <span id="phone-number">010-1234-5678</span>
+        </p>
+      </div>
+    </article>
+  </div>
+
+  <div class="actions">
+    <a class="btn primary" href="tel:01012345678">전화 걸기</a>
+    <button class="btn" id="copy-phone" type="button">번호 복사</button>
+    <span class="status" id="copy-status" role="status"></span>
+  </div>
+</main>
+
+<script>
+  const number = document.getElementById("phone-number");
+  const status = document.getElementById("copy-status");
+
+  function selectNumber() {
+    const range = document.createRange();
+    range.selectNodeContents(number);
+    const selection = window.getSelection();
+    selection.removeAllRanges();
+    selection.addRange(range);
+    status.textContent = "번호를 선택했습니다. Ctrl+C로 복사하세요.";
+  }
+
+  document.getElementById("copy-phone").addEventListener("click", () => {
+    if (!navigator.clipboard) {
+      selectNumber();
+      return;
+    }
+    navigator.clipboard.writeText(number.textContent).then(
+      () => { status.textContent = "번호를 복사했습니다."; },
+      selectNumber
+    );
+  });
+</script>
+</body>
+</html>
